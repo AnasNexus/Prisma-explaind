@@ -9,12 +9,12 @@ const PORT = process.env.PORT;
 
 const usersRoute = require("./routes/users");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Routes
 
 app.use("/users", usersRoute);
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 const startServer = async () => {
   try {
