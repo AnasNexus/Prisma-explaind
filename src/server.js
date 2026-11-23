@@ -1,14 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-const { connectDB } = require("./config/db");
+import { config } from "dotenv";
+import express from "express";
+import { connectDB } from "./config/db.js";
+
+config();
 
 const app = express();
 const PORT = process.env.PORT;
 
 // routers
-
-const usersRoute = require("./routes/users");
-
+import usersRoute from "./routes/users.js";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -1,6 +1,5 @@
-const { PrismaClient } = require("./../../generated/prisma/client.ts");
-const { PrismaMariaDb } = require("@prisma/adapter-mariadb");
-
+import { PrismaClient } from "./../../generated/prisma/client.ts";
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 const adapter = new PrismaMariaDb({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -29,4 +28,4 @@ const connectDB = async () => {
 const disconnect = async () => {
   await prisma.$disconnect();
 };
-module.exports = { prisma, connectDB, disconnect };
+export { prisma, connectDB, disconnect };
