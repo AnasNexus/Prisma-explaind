@@ -18,4 +18,18 @@ model User {
   name      String?
   password  String
   createdAt DateTime @default(now())
+
+  posters Posters[]
+}
+
+model Posters {
+  id String @id @default(uuid())
+  title String
+  explain String
+
+  userid String
+
+  user User @relation(fields: [userid] , references: [id])
+
+  createdat DateTime @default(now())
 }

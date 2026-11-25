@@ -1,21 +1,25 @@
-import { config } from "dotenv";
 import express from "express";
+import { config } from "dotenv";
+
 import { connectDB } from "./config/db.js";
 
+// import Routes
+import MainAPIRouter from "./routes/mainRoutes.js";
+
+// ENV Config Function:
 config();
 
 const app = express();
 const PORT = process.env.PORT;
 
 // routers
-import usersRoute from "./routes/users.js";
+
+app.use("/api", MainAPIRouter);
+
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Routes
-
-app.use("/users", usersRoute);
-
+// server Start Function
 const startServer = async () => {
   try {
     await connectDB();
